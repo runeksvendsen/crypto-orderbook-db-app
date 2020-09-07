@@ -1,0 +1,73 @@
+name:                crypto-orderbook-db-app
+version:             0.1.0.0
+github:              "runeksvendsen/crypto-orderbook-db-app"
+license:             BSD3
+author:              "Rune K. Svendsen"
+maintainer:          "runesvend@gmail.com"
+copyright:           "CC0"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+description:         Please see the README on GitHub at <https://github.com/runeksvendsen/crypto-orderbook-db-app#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  dependencies:
+  - protolude
+  - crypto-venues
+  - retry
+  - bytestring
+  - beam-postgres
+  - logging
+  - mtl
+  - rate-limit
+  - time-units
+  - text
+  - random
+  - time
+  - safe-exceptions
+
+# executables:
+#   crypto-orderbook-db:
+#     source-dirs:      exe/app
+#     main:             Main.hs
+#     dependencies:
+#     - protolude
+#     - crypto-orderbook-db
+#     - orderbook
+#     - beam-postgres
+#     - optparse-applicative
+#     - postgresql-transactional
+#     - crypto-venues
+#     - monad-parallel
+#     - errors
+#     - logging
+#     - http-client
+#     - http-client-tls
+#     - text
+#     - bytestring
+#     - time
+#     - safe-exceptions # Runner
+#     - time-units  # Schedule
+#     - random      # Schedule
+#     - retry       # PqConnection
+#     - rate-limit  # RetrySimple
+#     - mtl         # RetrySimple
+#     - githash
+#     default-extensions:
+#     - RecordWildCards
+#   crypto-orderbook-db-create-tables:
+#     source-dirs:      exe/create-tables
+#     main:             Main.hs
+#     dependencies:
+#     - crypto-orderbook-db
+#     - beam-postgres
+#     - beam-migrate
+#     - optparse-applicative
+#     - bytestring
+#     - logging

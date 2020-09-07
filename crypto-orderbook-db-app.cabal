@@ -1,0 +1,53 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 7ce5954e3b39fbeffb3bcc28a1034b3865163031ee07c7b2de393b4ac3cfde14
+
+name:           crypto-orderbook-db-app
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/runeksvendsen/crypto-orderbook-db-app#readme>
+homepage:       https://github.com/runeksvendsen/crypto-orderbook-db-app#readme
+bug-reports:    https://github.com/runeksvendsen/crypto-orderbook-db-app/issues
+author:         Rune K. Svendsen
+maintainer:     runesvend@gmail.com
+copyright:      CC0
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/runeksvendsen/crypto-orderbook-db-app
+
+library
+  exposed-modules:
+      CryptoDepth.OrderBook.Db.App.PqConnect
+      CryptoDepth.OrderBook.Db.App.RetrySimple
+      CryptoDepth.OrderBook.Db.App.Runner
+      Lib
+  other-modules:
+      Paths_crypto_orderbook_db_app
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , beam-postgres
+    , bytestring
+    , crypto-venues
+    , logging
+    , mtl
+    , protolude
+    , random
+    , rate-limit
+    , retry
+    , safe-exceptions
+    , text
+    , time
+    , time-units
+  default-language: Haskell2010
