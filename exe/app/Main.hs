@@ -6,15 +6,15 @@ module Main
 
 import           Prelude
 import qualified Options
-import qualified Runner
-import qualified PqConnect
+import qualified CryptoDepth.OrderBook.Db.App.Runner    as Runner
+import qualified CryptoDepth.OrderBook.Db.App.PqConnect as PqConnect
 import           Protolude.Conv                         (toS)
 import qualified OrderBook.Types                        as OB
 import qualified CryptoDepth.OrderBook.Db.Insert        as Insert
 import           CryptoDepth.OrderBook.Db.Insert        (SomeOrderBook)
 import qualified CryptoDepth.OrderBook.Db.Monad         as Db
 import qualified CryptoDepth.OrderBook.Db.Util          as Util
-import qualified RetrySimple                            as RS
+import qualified CryptoDepth.OrderBook.Db.App.RetrySimple as RS
 
 -- CryptoVenues
 import qualified CryptoVenues

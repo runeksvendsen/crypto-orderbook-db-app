@@ -32,42 +32,37 @@ library:
   - time
   - safe-exceptions
 
-# executables:
-#   crypto-orderbook-db:
-#     source-dirs:      exe/app
-#     main:             Main.hs
-#     dependencies:
-#     - protolude
-#     - crypto-orderbook-db
-#     - orderbook
-#     - beam-postgres
-#     - optparse-applicative
-#     - postgresql-transactional
-#     - crypto-venues
-#     - monad-parallel
-#     - errors
-#     - logging
-#     - http-client
-#     - http-client-tls
-#     - text
-#     - bytestring
-#     - time
-#     - safe-exceptions # Runner
-#     - time-units  # Schedule
-#     - random      # Schedule
-#     - retry       # PqConnection
-#     - rate-limit  # RetrySimple
-#     - mtl         # RetrySimple
-#     - githash
-#     default-extensions:
-#     - RecordWildCards
-#   crypto-orderbook-db-create-tables:
-#     source-dirs:      exe/create-tables
-#     main:             Main.hs
-#     dependencies:
-#     - crypto-orderbook-db
-#     - beam-postgres
-#     - beam-migrate
-#     - optparse-applicative
-#     - bytestring
-#     - logging
+executables:
+  crypto-orderbook-db:
+    source-dirs:      exe/app
+    main:             Main.hs
+    dependencies:
+    - protolude
+    - crypto-orderbook-db-app
+    - crypto-orderbook-db
+    - orderbook
+    - beam-postgres
+    - optparse-applicative
+    - postgresql-transactional
+    - crypto-venues
+    - monad-parallel
+    - errors
+    - logging
+    - http-client
+    - http-client-tls
+    - text
+    - bytestring
+    - time
+    - githash
+    default-extensions:
+    - RecordWildCards
+  crypto-orderbook-db-create-tables:
+    source-dirs:      exe/create-tables
+    main:             Main.hs
+    dependencies:
+    - crypto-orderbook-db
+    - beam-postgres
+    - beam-migrate
+    - optparse-applicative
+    - bytestring
+    - logging

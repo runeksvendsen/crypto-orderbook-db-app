@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 7ce5954e3b39fbeffb3bcc28a1034b3865163031ee07c7b2de393b4ac3cfde14
+-- hash: 8111d8af6f43d2b739720de89239b12093faa1dcae58329f29ee18d7798d65ff
 
 name:           crypto-orderbook-db-app
 version:        0.1.0.0
@@ -50,4 +50,49 @@ library
     , text
     , time
     , time-units
+  default-language: Haskell2010
+
+executable crypto-orderbook-db
+  main-is: Main.hs
+  other-modules:
+      Options
+      Paths_crypto_orderbook_db_app
+  hs-source-dirs:
+      exe/app
+  default-extensions: RecordWildCards
+  build-depends:
+      base >=4.7 && <5
+    , beam-postgres
+    , bytestring
+    , crypto-orderbook-db
+    , crypto-orderbook-db-app
+    , crypto-venues
+    , errors
+    , githash
+    , http-client
+    , http-client-tls
+    , logging
+    , monad-parallel
+    , optparse-applicative
+    , orderbook
+    , postgresql-transactional
+    , protolude
+    , text
+    , time
+  default-language: Haskell2010
+
+executable crypto-orderbook-db-create-tables
+  main-is: Main.hs
+  other-modules:
+      Paths_crypto_orderbook_db_app
+  hs-source-dirs:
+      exe/create-tables
+  build-depends:
+      base >=4.7 && <5
+    , beam-migrate
+    , beam-postgres
+    , bytestring
+    , crypto-orderbook-db
+    , logging
+    , optparse-applicative
   default-language: Haskell2010
