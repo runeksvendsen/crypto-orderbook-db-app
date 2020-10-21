@@ -10,11 +10,11 @@ packages:
     git: https://github.com/runeksvendsen/crypto-orderbook-db.git
     pantry-tree:
       size: 1663
-      sha256: 13b495be0e486dceb89916b387788efdb40c6a9433fb30bfc72ef3ea74285341
-    commit: e968e49bafc3e5e01c43f7423c9332b95dd9824f
+      sha256: 8e359fcc147c0eb973254a2dd1568eacf64f3e4e2b35dbf778d52ee778a67214
+    commit: e88f7d3be29c8849c0365c3e4cd61937d0ea58da
   original:
     git: https://github.com/runeksvendsen/crypto-orderbook-db.git
-    commit: e968e49bafc3e5e01c43f7423c9332b95dd9824f
+    commit: e88f7d3be29c8849c0365c3e4cd61937d0ea58da
 - completed:
     hackage: logging-3.0.5@sha256:88096d3124fce9a19af3720f751e1a354d866ed5030d2e5197238d2277cdb2f2,2374
     pantry-tree:

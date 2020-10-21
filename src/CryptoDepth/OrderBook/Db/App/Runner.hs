@@ -17,13 +17,15 @@ where
 import           Data.Void              (Void)
 import           Control.Monad          (forever)
 import           Control.Concurrent     (threadDelay)
-import           Control.Exception      (SomeException)
+import           Control.Exception      (SomeException, fromException)
+import Database.Beam.Postgres           (SqlError(..))
 
 import qualified Control.Exception.Safe as ES
 import qualified Data.Time.Units        as TU
 import qualified System.Random          as Random
 import qualified Control.Logging        as Log
 import qualified Data.Time.Clock        as C
+
 
 
 -- | Indicates whether to pause after running the action,
@@ -75,6 +77,10 @@ logSwallowExceptions
 logSwallowExceptions action =
     action `ES.catch` \someException -> do
         logErrorS "MAIN" (show (someException :: SomeException))
-        return NoPause
+        return $ toPauseAction someException
   where
+    toPauseAction someException =
+        case fromException someException of
+            Just sqlError -> if sqlState sqlError == "23505" then Pause else NoPause
+            Nothing -> NoPause
     logErrorS = Log.loggingLogger Log.LevelError
