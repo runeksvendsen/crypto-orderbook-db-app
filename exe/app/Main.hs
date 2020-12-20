@@ -19,6 +19,7 @@ import qualified CryptoDepth.OrderBook.Db.App.RetrySimple as RS
 -- CryptoVenues
 import qualified CryptoVenues
 import qualified CryptoVenues.Types.ABook               as AB
+import qualified CryptoVenues.Types.Market              as CryptoVenues
 import qualified CryptoVenues.Fetch.EnumMarkets         as EnumMarkets
 import qualified CryptoVenues.Venues                    as Venues
 import qualified CryptoVenues.Types.AppM                as AppM
@@ -39,6 +40,7 @@ import           Control.Error                          (lefts, rights)
 import           Control.Monad                          (forM, forM_, (<=<))
 import           Control.Monad.IO.Class                 (liftIO)
 import           Control.Exception                      (bracket)
+import           Data.List                              ((\\))
 
 
 main :: IO Runner.Void
@@ -184,9 +186,17 @@ venueBooks
     -> AppM.AppM IO [(Clock.UTCTime, OB.AnyBook venue)]
 venueBooks _ = do
     allMarkets <- retrying EnumMarkets.marketList
-    forM allMarkets $ \market -> do
+    let marketList = debugFilterMarkets "USD" 20 allMarkets
+    forM marketList $ \market -> do
         book <- fetchMarketBook market
         time <- liftIO Clock.getCurrentTime
         return (time, book)
   where
     retrying = id <=< RS.rateLimitRetrySimple (1 :: RS.Second)
+
+debugFilterMarkets numeraire numObLimit allMarkets =
+    numeraireLst ++ markets
+  where
+    btcEth = ["BTC", "ETH"]
+    numeraireLst = filter (\mkt -> CryptoVenues.miBase mkt `elem` btcEth && CryptoVenues.miQuote mkt == numeraire) allMarkets
+    markets = take (fromIntegral numObLimit - length numeraireLst) (allMarkets \\ numeraireLst)
