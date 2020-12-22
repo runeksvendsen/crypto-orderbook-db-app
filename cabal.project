@@ -13,7 +13,7 @@ source-repository-package
 source-repository-package
     type: git
     location: https://github.com/runeksvendsen/crypto-venues.git
-    tag: f2632023996cec1518be237037b2c855ae7da635
+    tag: 2f7f1fa907383786a36f8b2d6e13c610668640ef
 
 source-repository-package
     type: git
