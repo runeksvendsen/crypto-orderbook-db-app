@@ -186,8 +186,7 @@ venueBooks
     -> AppM.AppM IO [(Clock.UTCTime, OB.AnyBook venue)]
 venueBooks _ = do
     allMarkets <- retrying EnumMarkets.marketList
-    let marketList = debugFilterMarkets "USD" 20 allMarkets
-    forM marketList $ \market -> do
+    forM allMarkets $ \market -> do
         book <- fetchMarketBook market
         time <- liftIO Clock.getCurrentTime
         return (time, book)
