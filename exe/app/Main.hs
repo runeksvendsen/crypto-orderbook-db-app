@@ -188,7 +188,7 @@ venueBooks
 venueBooks debugMaxBooks _ = do
     allMarkets <- retrying EnumMarkets.marketList
     let marketList = debugFilterMarkets "USD" debugMaxBooks allMarkets
-    forM allMarkets $ \market -> do
+    forM marketList $ \market -> do
         book <- fetchMarketBook market
         time <- liftIO Clock.getCurrentTime
         return (time, book)
