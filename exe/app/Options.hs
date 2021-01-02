@@ -20,6 +20,7 @@ data Options = Options
     { dbConnString      :: BS.ByteString
     , dbMaxRetries      :: Word
     , fetchMaxRetries   :: Word
+    , debugMaxBooks     :: Maybe Word
     }
 
 options :: Opt.Parser Options
@@ -27,6 +28,7 @@ options = Options
     <$> connString'
     <*> dbConnRetry'
     <*> fetchMaxRetries'
+    <*> optional debugMaxBooks'
 
 opts :: Opt.ParserInfo Options
 opts = info options $
@@ -53,3 +55,9 @@ fetchMaxRetries' = option auto $
   <> short 'r'
   <> metavar "MAX_RETRIES"
   <> help "Maximum number of times to retry failed request"
+
+debugMaxBooks' :: Opt.Parser Word
+debugMaxBooks' = option auto $
+     long "max-books"
+  <> metavar "MAX_BOOKS"
+  <> help "(DEBUG) Limit number of fetched orderbooks"

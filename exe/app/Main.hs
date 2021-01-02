@@ -36,7 +36,7 @@ import qualified Control.Logging                        as Log
 import qualified Data.Time.Clock                        as Clock
 
 import           Data.Proxy                             (Proxy(..))
-import           Control.Error                          (lefts, rights)
+import           Control.Error                          (fromMaybe, lefts, rights)
 import           Control.Monad                          (forM, forM_, (<=<))
 import           Control.Monad.IO.Class                 (liftIO)
 import           Control.Exception                      (bracket)
@@ -91,7 +91,7 @@ withConnection args =
 --  Otherwise 'Runner.Pause' is returned.
 connectFetchStore :: Options.Options -> IO Runner.PauseAction
 connectFetchStore args = do
-    bookFetchRunM <- fetchRun (Options.fetchMaxRetries args)
+    bookFetchRunM <- fetchRun (Options.fetchMaxRetries args) (fromMaybe maxBound $ Options.debugMaxBooks args)
     maybe (return Runner.NoPause) connectSaveRun bookFetchRunM
   where
     connectSaveRun bookFetchRun =
@@ -112,10 +112,10 @@ logInfoS :: T.Text -> String -> IO ()
 logInfoS = Log.loggingLogger Log.LevelInfo
 
 -- Nothing = error
-fetchRun :: Word -> IO (Maybe BookRun)
-fetchRun maxRetries = do
+fetchRun :: Word -> Word -> IO (Maybe BookRun)
+fetchRun maxRetries debugMaxBooks = do
     runStartTime <- Clock.getCurrentTime
-    timeBookListM <- fetchBooks maxRetries
+    timeBookListM <- fetchBooks maxRetries debugMaxBooks
     case timeBookListM of
         Nothing -> return Nothing
         Just timeBookList -> do
@@ -130,11 +130,11 @@ data BookRun = BookRun
 
 -- TODO: error handling when running "EnumMarkets.marketList"
 -- Don't save books unless all venues succeed.
-fetchBooks :: Word -> IO (Maybe [(Clock.UTCTime, SomeOrderBook)])
-fetchBooks maxRetries = do
+fetchBooks :: Word -> Word -> IO (Maybe [(Clock.UTCTime, SomeOrderBook)])
+fetchBooks maxRetries debugMaxBooks = do
     man <- HTTP.newManager HTTPS.tlsManagerSettings
     booksE <- throwErrM $
-        AppM.runAppM man maxRetries $ allBooks
+        AppM.runAppM man maxRetries $ allBooks debugMaxBooks
     -- Log errors
     let errors = lefts booksE
     forM_ errors logFetchError
@@ -172,20 +172,22 @@ withLogging ioa = Log.withStderrLogging $ do
 -- Error handling: for any given venue, return either *all* available
 --  order books or an error.
 allBooks
-    :: AppM.AppM IO [Either AppM.Error [(Clock.UTCTime, SomeOrderBook)]]
-allBooks = do
+    :: Word -> AppM.AppM IO [Either AppM.Error [(Clock.UTCTime, SomeOrderBook)]]
+allBooks debugMaxBooks = do
     Par.forM Venues.allVenues $ \(CryptoVenues.AnyVenue p) ->
-         AppM.evalAppM (map (fmap $ toSomeOrderBook . AB.toABook) <$> venueBooks p)
+         AppM.evalAppM (map (fmap $ toSomeOrderBook . AB.toABook) <$> venueBooks debugMaxBooks p)
   where
     toSomeOrderBook (AB.ABook ob) = Insert.SomeOrderBook ob
 
 -- | Fetch all books for a given venue
 venueBooks
     :: CryptoVenues.MarketBook venue
-    => Proxy venue
+    => Word
+    -> Proxy venue
     -> AppM.AppM IO [(Clock.UTCTime, OB.AnyBook venue)]
-venueBooks _ = do
+venueBooks debugMaxBooks _ = do
     allMarkets <- retrying EnumMarkets.marketList
+    let marketList = debugFilterMarkets "USD" debugMaxBooks allMarkets
     forM allMarkets $ \market -> do
         book <- fetchMarketBook market
         time <- liftIO Clock.getCurrentTime
