@@ -29,7 +29,7 @@ library:
   - safe-exceptions
 
 executables:
-  crypto-orderbook-db:
+  crypto-orderbook-service:
     source-dirs:      exe/app
     main:             Main.hs
     dependencies:
@@ -52,7 +52,7 @@ executables:
     - githash
     default-extensions:
     - RecordWildCards
-  crypto-orderbook-db-create-tables:
+  crypto-orderbook-service-create-tables:
     source-dirs:      exe/create-tables
     main:             Main.hs
     dependencies:

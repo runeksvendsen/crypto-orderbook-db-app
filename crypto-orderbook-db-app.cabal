@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: dadd72b77ac289242bd058d26a903b8517d0cf011bcd06f3c95bcbfc8e098733
+-- hash: ab377edf75c59fda0da33ec9f18e670bbc7d924be366acb177299d421047d913
 
 name:           crypto-orderbook-db-app
 version:        0.1.0.0
@@ -49,7 +49,7 @@ library
     , time-units
   default-language: Haskell2010
 
-executable crypto-orderbook-db
+executable crypto-orderbook-service
   main-is: Main.hs
   other-modules:
       Options
@@ -78,7 +78,7 @@ executable crypto-orderbook-db
     , time
   default-language: Haskell2010
 
-executable crypto-orderbook-db-create-tables
+executable crypto-orderbook-service-create-tables
   main-is: Main.hs
   other-modules:
       Paths_crypto_orderbook_db_app
