@@ -6,10 +6,6 @@ author:              "Rune K. Svendsen"
 maintainer:          "runesvend@gmail.com"
 copyright:           "CC0"
 
-extra-source-files:
-- README.md
-- ChangeLog.md
-
 description:         Please see the README on GitHub at <https://github.com/runeksvendsen/crypto-orderbook-db-app#readme>
 
 dependencies:

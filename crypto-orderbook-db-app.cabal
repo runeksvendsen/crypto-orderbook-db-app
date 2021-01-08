@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 8111d8af6f43d2b739720de89239b12093faa1dcae58329f29ee18d7798d65ff
+-- hash: dadd72b77ac289242bd058d26a903b8517d0cf011bcd06f3c95bcbfc8e098733
 
 name:           crypto-orderbook-db-app
 version:        0.1.0.0
@@ -17,9 +17,6 @@ copyright:      CC0
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
-extra-source-files:
-    README.md
-    ChangeLog.md
 
 source-repository head
   type: git
