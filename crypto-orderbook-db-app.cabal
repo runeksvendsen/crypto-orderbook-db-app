@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: ab377edf75c59fda0da33ec9f18e670bbc7d924be366acb177299d421047d913
+-- hash: 59a703e83b19f39ec0f68a9f28c7b6174d5bc2c2efb0c624cfd84e84a7e8bebe
 
 name:           crypto-orderbook-db-app
 version:        0.1.0.0
@@ -65,7 +65,6 @@ executable crypto-orderbook-service
     , crypto-orderbook-db-app
     , crypto-venues
     , errors
-    , githash
     , http-client
     , http-client-tls
     , logging

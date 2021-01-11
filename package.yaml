@@ -49,7 +49,6 @@ executables:
     - text
     - bytestring
     - time
-    - githash
     default-extensions:
     - RecordWildCards
   crypto-orderbook-service-create-tables:

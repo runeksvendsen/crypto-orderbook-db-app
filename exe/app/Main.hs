@@ -26,7 +26,6 @@ import qualified CryptoVenues.Types.AppM                as AppM
 import qualified CryptoVenues.Types.Error               as AppMErr
 import           CryptoVenues.Fetch.MarketBook          (fetchMarketBook)
 
-import qualified GitHash
 import qualified Database.Beam.Postgres                 as Postgres
 import qualified Data.Text                              as T
 import qualified Control.Monad.Parallel                 as Par
@@ -46,8 +45,6 @@ import           Data.List                              ((\\))
 main :: IO Runner.Void
 main = Options.withArgs $ \args ->
     withLogging $ do
-        -- Log git version info
-        logGitHash
         -- Test connection on startup.
         -- Program will crash if a connection cannot be established.
         testConnection args
@@ -59,13 +56,6 @@ main = Options.withArgs $ \args ->
   where
     testConnection args' =
         withConnection args' (const $ return ())
-    logGitHash =
-        let gi = $$(GitHash.tGitInfoCwd)
-            commitInfo = concat
-                [ GitHash.giBranch gi, "@", GitHash.giHash gi
-                , " (", GitHash.giCommitDate gi, ")"
-                ]
-        in logInfoS "MAIN" commitInfo
 
 withConnection
     :: Options.Options
