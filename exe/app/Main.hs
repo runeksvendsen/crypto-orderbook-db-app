@@ -102,7 +102,7 @@ logInfoS :: T.Text -> String -> IO ()
 logInfoS = Log.loggingLogger Log.LevelInfo
 
 -- Nothing = error
-fetchRun :: Word -> Word -> IO (Maybe BookRun)
+fetchRun :: Word -> Int -> IO (Maybe BookRun)
 fetchRun maxRetries debugMaxBooks = do
     runStartTime <- Clock.getCurrentTime
     timeBookListM <- fetchBooks maxRetries debugMaxBooks
@@ -120,7 +120,7 @@ data BookRun = BookRun
 
 -- TODO: error handling when running "EnumMarkets.marketList"
 -- Don't save books unless all venues succeed.
-fetchBooks :: Word -> Word -> IO (Maybe [(Clock.UTCTime, SomeOrderBook)])
+fetchBooks :: Word -> Int -> IO (Maybe [(Clock.UTCTime, SomeOrderBook)])
 fetchBooks maxRetries debugMaxBooks = do
     man <- HTTP.newManager HTTPS.tlsManagerSettings
     booksE <- throwErrM $
@@ -162,7 +162,7 @@ withLogging ioa = Log.withStderrLogging $ do
 -- Error handling: for any given venue, return either *all* available
 --  order books or an error.
 allBooks
-    :: Word -> AppM.AppM IO [Either AppM.Error [(Clock.UTCTime, SomeOrderBook)]]
+    :: Int -> AppM.AppM IO [Either AppM.Error [(Clock.UTCTime, SomeOrderBook)]]
 allBooks debugMaxBooks = do
     Par.forM Venues.allVenues $ \(CryptoVenues.AnyVenue p) ->
          AppM.evalAppM (map (fmap $ toSomeOrderBook . AB.toABook) <$> venueBooks debugMaxBooks p)
@@ -172,7 +172,7 @@ allBooks debugMaxBooks = do
 -- | Fetch all books for a given venue
 venueBooks
     :: CryptoVenues.MarketBook venue
-    => Word
+    => Int
     -> Proxy venue
     -> AppM.AppM IO [(Clock.UTCTime, OB.AnyBook venue)]
 venueBooks debugMaxBooks _ = do
@@ -190,4 +190,4 @@ debugFilterMarkets numeraire numObLimit allMarkets =
   where
     btcEth = ["BTC", "ETH"]
     numeraireLst = filter (\mkt -> CryptoVenues.miBase mkt `elem` btcEth && CryptoVenues.miQuote mkt == numeraire) allMarkets
-    markets = take (fromIntegral numObLimit - length numeraireLst) (allMarkets \\ numeraireLst)
+    markets = take (numObLimit - length numeraireLst) (allMarkets \\ numeraireLst)
