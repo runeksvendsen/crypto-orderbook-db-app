@@ -33,6 +33,7 @@ pgConnectRetry maxRetries connStr =
         [ "server closed the connection unexpectedly"
         , "Connection refused"
         , "Connection timed out"
+        , "the database system is starting up"
         ]
     logRetry :: Bool -> IOException -> RT.RetryStatus -> IO ()
     logRetry retrying err rs = do

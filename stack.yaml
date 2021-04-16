@@ -2,11 +2,11 @@ resolver: lts-14.0
 
 extra-deps:
 - git: https://github.com/runeksvendsen/orderbook.git
-  commit: 1cfe64aeb59ddebcfb0b8353f82457d16766fa36
+  commit: b0b7babf47e26538af611210b92adf00b3f79b11
 - git: https://github.com/runeksvendsen/crypto-venues.git
-  commit: f2632023996cec1518be237037b2c855ae7da635
+  commit: 2f7f1fa907383786a36f8b2d6e13c610668640ef
 - git: https://github.com/runeksvendsen/crypto-orderbook-db.git
-  commit: e88f7d3be29c8849c0365c3e4cd61937d0ea58da
+  commit: 9d5e3f8a6af5fbed25c21327a222393bd1c77de5
 - logging-3.0.5@sha256:88096d3124fce9a19af3720f751e1a354d866ed5030d2e5197238d2277cdb2f2
 - rate-limit-1.4.1@sha256:27abe882e8b7851202cac124ea2b631e77ab7216f7a655b0782704838fe3c305
 - time-units-1.0.0@sha256:27cf54091c4a0ca73d504fc11d5c31ab4041d17404fe3499945e2055697746c1

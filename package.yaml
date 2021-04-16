@@ -6,10 +6,6 @@ author:              "Rune K. Svendsen"
 maintainer:          "runesvend@gmail.com"
 copyright:           "CC0"
 
-extra-source-files:
-- README.md
-- ChangeLog.md
-
 description:         Please see the README on GitHub at <https://github.com/runeksvendsen/crypto-orderbook-db-app#readme>
 
 dependencies:
@@ -33,7 +29,7 @@ library:
   - safe-exceptions
 
 executables:
-  crypto-orderbook-db:
+  crypto-orderbook-service:
     source-dirs:      exe/app
     main:             Main.hs
     dependencies:
@@ -53,10 +49,9 @@ executables:
     - text
     - bytestring
     - time
-    - githash
     default-extensions:
     - RecordWildCards
-  crypto-orderbook-db-create-tables:
+  crypto-orderbook-service-create-tables:
     source-dirs:      exe/create-tables
     main:             Main.hs
     dependencies:
