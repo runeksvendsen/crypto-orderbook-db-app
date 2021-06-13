@@ -20,23 +20,23 @@ packages:
     version: 0.3.0.0
     git: https://github.com/runeksvendsen/crypto-venues.git
     pantry-tree:
-      size: 2750
-      sha256: 4dc00a354fd8d5dfadbf237d759594704f2dc36f74dfec2b9dd957d85626be9d
-    commit: 2f7f1fa907383786a36f8b2d6e13c610668640ef
+      size: 2834
+      sha256: f93828b08f7f69b901348188f5ed1c9dee798cb988fe8b733cd322531301779b
+    commit: e78152dd06f8fbe1d9c92ef7456111c9c82f670c
   original:
     git: https://github.com/runeksvendsen/crypto-venues.git
-    commit: 2f7f1fa907383786a36f8b2d6e13c610668640ef
+    commit: e78152dd06f8fbe1d9c92ef7456111c9c82f670c
 - completed:
     name: crypto-orderbook-db
     version: 0.1.0.0
     git: https://github.com/runeksvendsen/crypto-orderbook-db.git
     pantry-tree:
-      size: 1664
-      sha256: 4431f618ec1587384823a950b37c36150371de69fbcf1d68f9aa52f4601e1145
-    commit: 9d5e3f8a6af5fbed25c21327a222393bd1c77de5
+      size: 1665
+      sha256: a6e36446067a8f989b4ccfcd2d72f673fad9151a458148a34e7697775735f7b8
+    commit: ac152dece625b56d802596f659f0251c0494e0f2
   original:
     git: https://github.com/runeksvendsen/crypto-orderbook-db.git
-    commit: 9d5e3f8a6af5fbed25c21327a222393bd1c77de5
+    commit: ac152dece625b56d802596f659f0251c0494e0f2
 - completed:
     hackage: logging-3.0.5@sha256:88096d3124fce9a19af3720f751e1a354d866ed5030d2e5197238d2277cdb2f2,2374
     pantry-tree:
