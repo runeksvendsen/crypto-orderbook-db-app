@@ -8,12 +8,12 @@ packages:
 source-repository-package
     type: git
     location: https://github.com/runeksvendsen/crypto-orderbook-db.git
-    tag: 9d5e3f8a6af5fbed25c21327a222393bd1c77de5
+    tag: ac152dece625b56d802596f659f0251c0494e0f2
 
 source-repository-package
     type: git
     location: https://github.com/runeksvendsen/crypto-venues.git
-    tag: 2f7f1fa907383786a36f8b2d6e13c610668640ef
+    tag: e78152dd06f8fbe1d9c92ef7456111c9c82f670c
 
 source-repository-package
     type: git
