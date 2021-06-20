@@ -1,4 +1,4 @@
 
 FROM crypto-orderbook-db:latest
 
-ENTRYPOINT [ "crypto-orderbook-db" ]
+ENTRYPOINT [ "crypto-orderbook-service" ]
