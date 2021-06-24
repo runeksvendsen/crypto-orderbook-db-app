@@ -4,7 +4,7 @@ extra-deps:
 - git: https://github.com/runeksvendsen/orderbook.git
   commit: b0b7babf47e26538af611210b92adf00b3f79b11
 - git: https://github.com/runeksvendsen/crypto-venues.git
-  commit: e78152dd06f8fbe1d9c92ef7456111c9c82f670c
+  commit: 78f9b4fc5d7bd2f384c554360bbd675edc99f64b
 - git: https://github.com/runeksvendsen/crypto-orderbook-db.git
   commit: ac152dece625b56d802596f659f0251c0494e0f2
 - logging-3.0.5@sha256:88096d3124fce9a19af3720f751e1a354d866ed5030d2e5197238d2277cdb2f2
