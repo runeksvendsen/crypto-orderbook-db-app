@@ -20,12 +20,12 @@ packages:
     version: 0.3.0.0
     git: https://github.com/runeksvendsen/crypto-venues.git
     pantry-tree:
-      size: 2904
-      sha256: 3f148c471597100c58b50df8732789663c53b690af6c4c7e49369ddca378bcf5
-    commit: 1b7cdc17b5a333a1d03efebd6e86a05336e1bff0
+      size: 3106
+      sha256: f844ec8d04467a53c9a83f18179dc0ce08c33410d856f3a44d2d8b6e0805ef8c
+    commit: 521a99d85ee854ce3a27155054176bedd76c37bf
   original:
     git: https://github.com/runeksvendsen/crypto-venues.git
-    commit: 1b7cdc17b5a333a1d03efebd6e86a05336e1bff0
+    commit: 521a99d85ee854ce3a27155054176bedd76c37bf
 - completed:
     name: crypto-orderbook-db
     version: 0.1.0.0
