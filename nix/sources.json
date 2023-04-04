@@ -1,0 +1,87 @@
+{
+    "crypto-orderbook-db": {
+        "branch": "master",
+        "description": "Persist order books from cryptocurrency exchanges",
+        "homepage": null,
+        "owner": "runeksvendsen",
+        "repo": "crypto-orderbook-db",
+        "rev": "ac152dece625b56d802596f659f0251c0494e0f2",
+        "sha256": "0rhng4ip0x8vlrzkqbifvd4dmxn1rqc63ib816lfvr9nkv0qv4x2",
+        "type": "tarball",
+        "url": "https://github.com/runeksvendsen/crypto-orderbook-db/archive/ac152dece625b56d802596f659f0251c0494e0f2.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "crypto-venues": {
+        "branch": "master",
+        "description": "Fetch order books from various cryptocurrency exchanges",
+        "homepage": "",
+        "owner": "runeksvendsen",
+        "repo": "crypto-venues",
+        "rev": "521a99d85ee854ce3a27155054176bedd76c37bf",
+        "sha256": "01pndmsln8j388g238jwyxgahh30fml7qyml0bwgnhkvay23ccbs",
+        "type": "tarball",
+        "url": "https://github.com/runeksvendsen/crypto-venues/archive/521a99d85ee854ce3a27155054176bedd76c37bf.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "haskell-nix-extra-hackage": {
+        "branch": "master",
+        "description": "❄️ A tool to use custom forks of Hackage packages with haskell.nix",
+        "homepage": "",
+        "owner": "ilyakooo0",
+        "repo": "haskell-nix-extra-hackage",
+        "rev": "10ad2cc4e7fff9a6e3edade3381af38dadf835db",
+        "sha256": "1pa0wl6sd7c3qb26pnn09pkqwfzv44ac7p8akjvgd56mrmk88vyn",
+        "type": "tarball",
+        "url": "https://github.com/ilyakooo0/haskell-nix-extra-hackage/archive/10ad2cc4e7fff9a6e3edade3381af38dadf835db.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "haskellNix": {
+        "branch": "master",
+        "description": "Alternative Haskell Infrastructure for Nixpkgs",
+        "homepage": "https://input-output-hk.github.io/haskell.nix",
+        "owner": "input-output-hk",
+        "ref": "master",
+        "repo": "haskell.nix",
+        "rev": "6ab8690263005c263c63dfb57cdccfc681db28c4",
+        "sha256": "12z1mw6z3km9k74l41ynmxsyp4zw0kcpdaz4g50c7978ysiwm8p1",
+        "type": "tarball",
+        "url": "https://github.com/input-output-hk/haskell.nix/archive/6ab8690263005c263c63dfb57cdccfc681db28c4.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "niv": {
+        "branch": "master",
+        "description": "Easy dependency management for Nix projects",
+        "homepage": "https://github.com/nmattia/niv",
+        "owner": "nmattia",
+        "repo": "niv",
+        "rev": "689d0e5539eddd0b0f566aee7bb18629eee7df74",
+        "sha256": "1rld3lk42l6b01f2gcrhq8qm9vry1awmfl29zmpiqda9dy89vbx0",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/niv/archive/689d0e5539eddd0b0f566aee7bb18629eee7df74.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs": {
+        "branch": "nixpkgs-unstable",
+        "description": "Nix Packages collection",
+        "homepage": "",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "06365ba4549654b7ce58c33365c1282800e83a9e",
+        "sha256": "1mmq4v773gv2np66nsgbd1frhg51415j5m4a51xi6y8n3hczbj6b",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/06365ba4549654b7ce58c33365c1282800e83a9e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "orderbook": {
+        "branch": "master",
+        "description": "Type safe limit order book",
+        "homepage": "",
+        "owner": "runeksvendsen",
+        "repo": "orderbook",
+        "rev": "27ca137bc184828a1177c513083d874261b95726",
+        "sha256": "1k2zp7fc8ppcm6h4j17jasf4v1qahdga4hb5j63cvfvlz60s1kwy",
+        "type": "tarball",
+        "url": "https://github.com/runeksvendsen/orderbook/archive/27ca137bc184828a1177c513083d874261b95726.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}

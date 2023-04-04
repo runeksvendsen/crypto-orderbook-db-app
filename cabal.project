@@ -9,16 +9,19 @@ source-repository-package
     type: git
     location: https://github.com/runeksvendsen/crypto-orderbook-db.git
     tag: ac152dece625b56d802596f659f0251c0494e0f2
+    --sha256: opONwZ425e2oCWjFYRjOwfbaSNsuLjx/pht1cCN5FmY=
 
 source-repository-package
     type: git
     location: https://github.com/runeksvendsen/crypto-venues.git
-    tag: e78152dd06f8fbe1d9c92ef7456111c9c82f670c
+    tag: 521a99d85ee854ce3a27155054176bedd76c37bf
+    --sha256: ejE2hFd7Qvv4ArR6fGh1YECoXvdcoiEeQkMiS3Vt9gY=
 
 source-repository-package
     type: git
     location: https://github.com/runeksvendsen/orderbook.git
-    tag: b0b7babf47e26538af611210b92adf00b3f79b11
+    --sha256: ns+ggfl0u82GkWVBol6DCodNnFbyBEmgqexexNy5X8w=
+    tag: 27ca137bc184828a1177c513083d874261b95726
 
 allow-older: *
 allow-newer: *
