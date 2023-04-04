@@ -1,13 +1,14 @@
-resolver: lts-14.0
+resolver: lts-18.28
 
 extra-deps:
 - git: https://github.com/runeksvendsen/orderbook.git
-  commit: b0b7babf47e26538af611210b92adf00b3f79b11
+  commit: 27ca137bc184828a1177c513083d874261b95726
 - git: https://github.com/runeksvendsen/crypto-venues.git
   commit: 521a99d85ee854ce3a27155054176bedd76c37bf
 - git: https://github.com/runeksvendsen/crypto-orderbook-db.git
   commit: ac152dece625b56d802596f659f0251c0494e0f2
-- logging-3.0.5@sha256:88096d3124fce9a19af3720f751e1a354d866ed5030d2e5197238d2277cdb2f2
-- rate-limit-1.4.1@sha256:27abe882e8b7851202cac124ea2b631e77ab7216f7a655b0782704838fe3c305
-- time-units-1.0.0@sha256:27cf54091c4a0ca73d504fc11d5c31ab4041d17404fe3499945e2055697746c1
-- retry-0.8.1.2@sha256:b81e7d7e5f068da82349a3c157a2ab25d399c9ca4841d1b6e54e8c4050cb065f,2189
+- beam-core-0.9.1.0@sha256:b0c6578ab67f71a87d12644d4973b4376384fe9a6db0c8d3352f9ae741b67eea,5297
+- beam-migrate-0.5.1.0@sha256:55d5fae17584c14b654d19d9de01f0a65e6c229561ce4fd12de92eba98b39105,4923
+- beam-postgres-0.5.1.0@sha256:d72f287c966819f9a692c82c79a08b08483c27a32a2671a9c7b2ec4b0b73e473,4392
+- postgresql-transactional-1.1.1@sha256:07d38a5322ee278abdc01bbb7068196718bf4d0d77b08e1d8af4ac19e01e2883,1196
+- dlist-0.8.0.8@sha256:90ca348bffdc62d7070bcf0e97c728f8d01b24fbc7ea08d2909157d0da76534c,2066
