@@ -26,7 +26,7 @@ jobs:
 
       - uses: cachix/cachix-action@v10
         with:
-          name: crypto-orderbook-db-app
+          name: crypto-venues
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
       - name: Build library
