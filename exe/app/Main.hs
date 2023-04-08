@@ -27,6 +27,8 @@ import qualified CryptoVenues.Types.Error               as AppMErr
 import           CryptoVenues.Fetch.MarketBook          (fetchMarketBook)
 
 import qualified Database.Beam.Postgres                 as Postgres
+import qualified Gargoyle
+import qualified Gargoyle.PostgreSQL                    as Gargoyle
 import qualified Data.Text                              as T
 import qualified Control.Monad.Parallel                 as Par
 import qualified Network.HTTP.Client.TLS                as HTTPS
@@ -36,7 +38,7 @@ import qualified Data.Time.Clock                        as Clock
 
 import           Data.Proxy                             (Proxy(..))
 import           Control.Error                          (fromMaybe, lefts, rights)
-import           Control.Monad                          (forM, forM_, (<=<))
+import           Control.Monad                          (forM, forM_, (<=<), (>=>))
 import           Control.Monad.IO.Class                 (liftIO)
 import           Control.Exception                      (bracket)
 import           Data.List                              ((\\))
@@ -62,13 +64,17 @@ withConnection
     -> (Postgres.Connection -> IO a)
     -> IO a
 withConnection args =
-    bracket openConn Postgres.close
+    case Options.dbTarget args of
+        Options.ConnectionString dbConnString ->
+            bracket (openConn dbConnString) Postgres.close
+        Options.LocalDb dbPath ->
+            withLocalDb dbPath
   where
-    dbConnString = Options.dbConnString args
-    dbMaxRetries = Options.dbMaxRetries args
-    openConn = do
+    withLocalDb dbPath withConn =
+        Gargoyle.withGargoyle Gargoyle.defaultPostgres dbPath (Postgres.connectPostgreSQL >=> withConn)
+    openConn dbConnString = do
         logInfoS "DB" ("Connecting to " ++ show dbConnString)
-        PqConnect.pgConnectRetry dbMaxRetries dbConnString
+        PqConnect.pgConnectRetry (Options.dbMaxRetries args) dbConnString
 
 -- | Open database connection,
 --   fetch orderbooks,

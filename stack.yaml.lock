@@ -72,6 +72,27 @@ packages:
       sha256: 1b5b9142a932f15c77f758f92f90bea6c805c42d4c62f7a697e8e4f6cf1ad6e6
   original:
     hackage: dlist-0.8.0.8@sha256:90ca348bffdc62d7070bcf0e97c728f8d01b24fbc7ea08d2909157d0da76534c,2066
+- completed:
+    hackage: gargoyle-0.1.1.1@sha256:d7070f1ce46e7349135d0092b872f5ebdd3362cdab449a06dad1a5af09372f93,1640
+    pantry-tree:
+      size: 263
+      sha256: ec2a208a83885aaefb0021ab5b90a18e17ab80411c76da1e6827b74eba41374e
+  original:
+    hackage: gargoyle-0.1.1.1@sha256:d7070f1ce46e7349135d0092b872f5ebdd3362cdab449a06dad1a5af09372f93,1640
+- completed:
+    hackage: gargoyle-postgresql-0.2.0.2@sha256:d7e69881cb15f4702fe1f74407d8ba50280b3893cddfbe70fcaff512f05262d2,3690
+    pantry-tree:
+      size: 509
+      sha256: d9a823f253b1e674ee706ed4ebc7f10e7f0bb2e5bd6ecc3b9b94f3892b791e4f
+  original:
+    hackage: gargoyle-postgresql-0.2.0.2@sha256:d7e69881cb15f4702fe1f74407d8ba50280b3893cddfbe70fcaff512f05262d2,3690
+- completed:
+    hackage: posix-escape-0.1@sha256:adbb650397cd8685ea220b40739ee80d4e8329643a98aa2993a6f13a598bd18c,1160
+    pantry-tree:
+      size: 386
+      sha256: e9824c495e3e2a3a1f737b5d2fcdd0ea1ce6b2919cec252c1ef7ca3b19dedf57
+  original:
+    hackage: posix-escape-0.1@sha256:adbb650397cd8685ea220b40739ee80d4e8329643a98aa2993a6f13a598bd18c,1160
 snapshots:
 - completed:
     size: 590100

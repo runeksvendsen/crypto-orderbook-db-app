@@ -32,6 +32,8 @@ executables:
   crypto-orderbook-service:
     source-dirs:      exe/app
     main:             Main.hs
+    ghc-options:
+      - -threaded
     dependencies:
     - protolude
     - crypto-orderbook-db-app
@@ -49,6 +51,8 @@ executables:
     - text
     - bytestring
     - time
+    - gargoyle
+    - gargoyle-postgresql
     default-extensions:
     - RecordWildCards
   crypto-orderbook-service-create-tables:

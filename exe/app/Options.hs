@@ -1,5 +1,6 @@
 module Options
 ( Options(..)
+, DbTarget(..)
 , withArgs
 , connString'
 )
@@ -17,15 +18,19 @@ withArgs f = do
     f args
 
 data Options = Options
-    { dbConnString      :: BS.ByteString
+    { dbTarget          :: DbTarget
     , dbMaxRetries      :: Word
     , fetchMaxRetries   :: Word
     , debugMaxBooks     :: Maybe Int
     }
 
+data DbTarget
+    = ConnectionString !BS.ByteString
+    | LocalDb !FilePath
+
 options :: Opt.Parser Options
 options = Options
-    <$> connString'
+    <$> (fmap ConnectionString connString' <|> fmap LocalDb localDb')
     <*> dbConnRetry'
     <*> fetchMaxRetries'
     <*> optional debugMaxBooks'
@@ -43,10 +48,17 @@ connString' = strOption $
   <> metavar "CONNSTRING"
   <> help "Database connection string (libpq format)"
 
+localDb' :: Opt.Parser FilePath
+localDb' = strOption $
+     long "local-db"
+  <> metavar "DIR"
+  <> help "Local Postgres database directory"
+
 dbConnRetry' :: Opt.Parser Word
 dbConnRetry' = option auto $
      long "db-max-retries"
   <> metavar "CONN_RETRIES"
+  <> value 10
   <> help "Maximum number of times to retry connecting to database"
 
 fetchMaxRetries' :: Opt.Parser Word
@@ -54,6 +66,7 @@ fetchMaxRetries' = option auto $
      long "max-retries"
   <> short 'r'
   <> metavar "MAX_RETRIES"
+  <> value 10
   <> help "Maximum number of times to retry failed request"
 
 debugMaxBooks' :: Opt.Parser Int
