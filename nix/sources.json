@@ -18,7 +18,7 @@
         "owner": "runeksvendsen",
         "repo": "crypto-venues",
         "rev": "ec5f23206ada19afe165bf6d9062217fa60dce27",
-        "sha256": "01pndmsln8j388g238jwyxgahh40fml7qyml0bwgnhkvay23ccbs",
+        "sha256": "sha256-ZjVHtst4f9v3O/uDJrucXygbY2cWTOKS1Ku554pGS/E=",
         "type": "tarball",
         "url": "https://github.com/runeksvendsen/crypto-venues/archive/ec5f23206ada19afe165bf6d9062217fa60dce27.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
