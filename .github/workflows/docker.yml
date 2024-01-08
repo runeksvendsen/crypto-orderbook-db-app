@@ -1,0 +1,54 @@
+name: Build and push Docker image
+
+on:
+  push:
+    # branches: ['release']
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v17
+        with:
+          install_url: https://releases.nixos.org/nix/nix-2.13.3/install
+          extra_nix_config: |
+            substituters = https://cache.nixos.org https://cache.iog.io
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=
+            system-features = benchmark big-parallel kvm nixos-test
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set IMAGE_NAME env var
+        run: |
+          echo "IMAGE_NAME=${{ env.REGISTRY }}/${{ github.repository }}/crypto-orderbook-service" >> "$GITHUB_ENV"
+
+      - name: Build
+        run: |
+          set -euo pipefail
+          nix-build --no-out-link --argstr name $IMAGE_NAME nix/docker.nix > out
+          echo "IMAGE_PATH=$(cat out)" >> "$GITHUB_ENV"
+
+      - name: Load image
+        run: |
+          docker load -i "$IMAGE_PATH"
+
+      - name: Push
+        run: |
+          docker push "$IMAGE_NAME"
