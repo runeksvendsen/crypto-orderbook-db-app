@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.3.
+-- This file has been generated from package.yaml by hpack version 0.35.1.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 59a703e83b19f39ec0f68a9f28c7b6174d5bc2c2efb0c624cfd84e84a7e8bebe
+-- hash: 8fea2939fae4119bba377cf5ce60b5bfa1c518f84f589215a0b25b64e9d3b77b
 
 name:           crypto-orderbook-db-app
 version:        0.1.0.0
@@ -32,6 +32,7 @@ library
       Paths_crypto_orderbook_db_app
   hs-source-dirs:
       src
+  ghc-options: -Wall
   build-depends:
       base >=4.7 && <5
     , beam-postgres
@@ -56,7 +57,9 @@ executable crypto-orderbook-service
       Paths_crypto_orderbook_db_app
   hs-source-dirs:
       exe/app
-  default-extensions: RecordWildCards
+  default-extensions:
+      RecordWildCards
+  ghc-options: -Wall
   build-depends:
       base >=4.7 && <5
     , beam-postgres
@@ -83,6 +86,7 @@ executable crypto-orderbook-service-create-tables
       Paths_crypto_orderbook_db_app
   hs-source-dirs:
       exe/create-tables
+  ghc-options: -Wall
   build-depends:
       base >=4.7 && <5
     , beam-migrate
