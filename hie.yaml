@@ -4,7 +4,7 @@ cradle:
       component: "crypto-orderbook-db-app:lib"
 
     - path: "./exe/app"
-      component: "crypto-orderbook-db-app:exe:crypto-orderbook-db"
+      component: "crypto-orderbook-db-app:exe:crypto-orderbook-service"
 
     - path: "./exe/create-tables"
-      component: "crypto-orderbook-db-app:exe:crypto-orderbook-db-create-tables"
+      component: "crypto-orderbook-db-app:exe:crypto-orderbook-service-create-tables"
