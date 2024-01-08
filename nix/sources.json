@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "runeksvendsen",
         "repo": "crypto-venues",
-        "rev": "521a99d85ee854ce3a27155054176bedd76c37bf",
-        "sha256": "01pndmsln8j388g238jwyxgahh30fml7qyml0bwgnhkvay23ccbs",
+        "rev": "ec5f23206ada19afe165bf6d9062217fa60dce27",
+        "sha256": "01pndmsln8j388g238jwyxgahh40fml7qyml0bwgnhkvay23ccbs",
         "type": "tarball",
-        "url": "https://github.com/runeksvendsen/crypto-venues/archive/521a99d85ee854ce3a27155054176bedd76c37bf.tar.gz",
+        "url": "https://github.com/runeksvendsen/crypto-venues/archive/ec5f23206ada19afe165bf6d9062217fa60dce27.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "haskell-nix-extra-hackage": {
