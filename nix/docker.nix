@@ -1,6 +1,9 @@
-{ name ? "crypto-orderbook-service"
+{ sources ? import ./nix/sources.nix {}
+, haskellNix ? import sources.haskellNix {}
+, pkgsSrc ? import haskellNix.sources.nixpkgs-2211 # nixpkgs-unstable
+, pkgs ? pkgsSrc (haskellNix.nixpkgsArgs // { })
+, name ? "crypto-orderbook-service"
 }:
-with (import ./pkgs.nix);
 let exes = import ../default.nix;
 in pkgs.dockerTools.buildImage {
   name = name;
