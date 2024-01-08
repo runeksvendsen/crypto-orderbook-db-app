@@ -4,7 +4,7 @@
 , pkgs ? pkgsSrc (haskellNix.nixpkgsArgs // { })
 , name ? "crypto-orderbook-service"
 }:
-let exes = import ../default.nix;
+let exes = import ../default.nix {};
 in pkgs.dockerTools.buildImage {
   name = name;
   copyToRoot = exes;
