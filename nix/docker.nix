@@ -1,4 +1,4 @@
-{ sources ? import ./nix/sources.nix {}
+{ sources ? import ./sources.nix {}
 , haskellNix ? import sources.haskellNix {}
 , pkgsSrc ? import haskellNix.sources.nixpkgs-2211 # nixpkgs-unstable
 , pkgs ? pkgsSrc (haskellNix.nixpkgsArgs // { })
