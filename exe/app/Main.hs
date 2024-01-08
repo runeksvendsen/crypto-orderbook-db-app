@@ -81,7 +81,10 @@ withConnection args =
 --  Otherwise 'Runner.Pause' is returned.
 connectFetchStore :: Options.Options -> IO Runner.PauseAction
 connectFetchStore args = do
-    bookFetchRunM <- fetchRun (Options.fetchMaxRetries args) (fromMaybe maxBound $ Options.debugMaxBooks args)
+    bookFetchRunM <- fetchRun
+        (Options.disabledVenues args)
+        (Options.fetchMaxRetries args)
+        (fromMaybe maxBound $ Options.debugMaxBooks args)
     maybe (return Runner.NoPause) connectSaveRun bookFetchRunM
   where
     connectSaveRun bookFetchRun =
@@ -102,10 +105,10 @@ logInfoS :: T.Text -> String -> IO ()
 logInfoS = Log.loggingLogger Log.LevelInfo
 
 -- Nothing = error
-fetchRun :: Word -> Int -> IO (Maybe BookRun)
-fetchRun maxRetries debugMaxBooks = do
+fetchRun :: [Venues.AnyVenue] -> Word -> Int -> IO (Maybe BookRun)
+fetchRun disabledVenues maxRetries debugMaxBooks = do
     runStartTime <- Clock.getCurrentTime
-    timeBookListM <- fetchBooks maxRetries debugMaxBooks
+    timeBookListM <- fetchBooks disabledVenues maxRetries debugMaxBooks
     case timeBookListM of
         Nothing -> return Nothing
         Just timeBookList -> do
@@ -120,11 +123,11 @@ data BookRun = BookRun
 
 -- TODO: error handling when running "EnumMarkets.marketList"
 -- Don't save books unless all venues succeed.
-fetchBooks :: Word -> Int -> IO (Maybe [(Clock.UTCTime, SomeOrderBook)])
-fetchBooks maxRetries debugMaxBooks = do
+fetchBooks :: [Venues.AnyVenue] -> Word -> Int -> IO (Maybe [(Clock.UTCTime, SomeOrderBook)])
+fetchBooks disabledVenues maxRetries debugMaxBooks = do
     man <- HTTP.newManager HTTPS.tlsManagerSettings
     booksE <- throwErrM $
-        AppM.runAppM man maxRetries $ allBooks debugMaxBooks
+        AppM.runAppM man maxRetries $ allBooks disabledVenues debugMaxBooks
     -- Log errors
     let errors = lefts booksE
     forM_ errors logFetchError
@@ -162,9 +165,9 @@ withLogging ioa = Log.withStderrLogging $ do
 -- Error handling: for any given venue, return either *all* available
 --  order books or an error.
 allBooks
-    :: Int -> AppM.AppM IO [Either AppM.Error [(Clock.UTCTime, SomeOrderBook)]]
-allBooks debugMaxBooks = do
-    Par.forM Venues.allVenues $ \(CryptoVenues.AnyVenue p) ->
+    :: [Venues.AnyVenue] -> Int -> AppM.AppM IO [Either AppM.Error [(Clock.UTCTime, SomeOrderBook)]]
+allBooks disabledVenues debugMaxBooks = do
+    Par.forM (Venues.allVenues \\ disabledVenues) $ \(CryptoVenues.AnyVenue p) ->
          AppM.evalAppM (map (fmap $ toSomeOrderBook . AB.toABook) <$> venueBooks debugMaxBooks p)
   where
     toSomeOrderBook (AB.ABook ob) = Insert.SomeOrderBook ob
