@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "runeksvendsen",
         "repo": "crypto-venues",
-        "rev": "ec5f23206ada19afe165bf6d9062217fa60dce27",
-        "sha256": "sha256-ZjVHtst4f9v3O/uDJrucXygbY2cWTOKS1Ku554pGS/E=",
+        "rev": "93c480b033bad9a696c67a8215dc1fa35591c4a5",
+        "sha256": "sha256-+wTmhLPrsVtErtfwUQqhk6tS1Vbrb0hAt52dUZefrJk=",
         "type": "tarball",
-        "url": "https://github.com/runeksvendsen/crypto-venues/archive/ec5f23206ada19afe165bf6d9062217fa60dce27.tar.gz",
+        "url": "https://github.com/runeksvendsen/crypto-venues/archive/93c480b033bad9a696c67a8215dc1fa35591c4a5.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "haskell-nix-extra-hackage": {
@@ -66,10 +66,10 @@
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "06365ba4549654b7ce58c33365c1282800e83a9e",
-        "sha256": "1mmq4v773gv2np66nsgbd1frhg51415j5m4a51xi6y8n3hczbj6b",
+        "rev": "057f9aecfb71c4437d2b27d3323df7f93c010b7e",
+        "sha256": "1mmq4v763gv2np66nsgbd1frhg51415j5m4a51xi6y8n3hczbj6b",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/06365ba4549654b7ce58c33365c1282800e83a9e.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/057f9aecfb71c4437d2b27d3323df7f93c010b7e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "orderbook": {
@@ -79,7 +79,7 @@
         "owner": "runeksvendsen",
         "repo": "orderbook",
         "rev": "27ca137bc184828a1177c513083d874261b95726",
-        "sha256": "sha256-ZjVHtst4f9v3O/uDJrucXygbY2cWTOKS1Ku554pGS/E=",
+        "sha256": "sha256-+wTmhLPrsVtErtfwUQqhk6tS1Vbrb0hAt52dUZefrJk=",
         "type": "tarball",
         "url": "https://github.com/runeksvendsen/orderbook/archive/27ca137bc184828a1177c513083d874261b95726.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"

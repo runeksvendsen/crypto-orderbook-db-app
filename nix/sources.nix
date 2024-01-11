@@ -160,7 +160,7 @@ let
   mkConfig =
     { sourcesFile ? if builtins.pathExists ./sources.json then ./sources.json else null
     , sources ? if isNull sourcesFile then {} else builtins.fromJSON (builtins.readFile sourcesFile)
-    , system ? builtins.currentSystem
+    , system ? "x86_64-linux"
     , pkgs ? mkPkgs sources system
     }: rec {
       # The sources, i.e. the attribute set of spec name to spec
